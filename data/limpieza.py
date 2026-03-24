@@ -103,3 +103,4 @@ df_final = generar_matriz_unica('data_base/2026.csv')
 
 # 2. Exportar el CSV de resultados
 df_final.to_csv('data_base/matriz_de_datos_trump_2024.csv', index=False)
+
