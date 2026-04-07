@@ -87,11 +87,11 @@ st.markdown("<h3 class='section-title'>2. Población y Muestreo</h3>", unsafe_al
 
 col_u, col_m, col_t = st.columns(3)
 with col_u:
-    st.markdown("""<div class="metodo-card" style="border-top-color: #FFCC00;"><h4>🌌 Universo</h4><p style="font-size: 2rem !important; text-align: center; font-weight: bold; color: #003366;">59.500</p><p style="text-align: center;">Anuncios registrados por Donald J. Trump.</p></div>""", unsafe_allow_html=True)
+    st.markdown("""<div class="metodo-card" style="border-top-color: #FFCC00;"><h4>🌌 Universo</h4><p style="font-size: 2rem !important; text-align: center; font-weight: bold; color: #003366;">59.500</p><p style="text-align: center;"> Anuncios publicitarios registrados en el Meta Ads Library difundidos a través de Facebook e Instagram durante la campaña electoral de Estados Unidos de 2024 por el anunciante Donald J. Trump. </p></div>""", unsafe_allow_html=True)
 with col_m:
-    st.markdown("""<div class="metodo-card" style="border-top-color: #FFCC00;"><h4>📊 Muestra</h4><p style="font-size: 2rem !important; text-align: center; font-weight: bold; color: #003366;">2.000</p><p style="text-align: center;">Registros únicos seleccionados para el análisis estadístico.</p></div>""", unsafe_allow_html=True)
+    st.markdown("""<div class="metodo-card" style="border-top-color: #FFCC00;"><h4>📊 Muestra</h4><p style="font-size: 2rem !important; text-align: center; font-weight: bold; color: #003366;">2.000</p><p style="text-align: center;"> Anuncios publicitarios registrados en el Meta Ads Library difundidos a través de Facebook e Instagram durante la campaña electoral de Estados Unidos de 2024 por el anunciante Donald J. Trump. </p></div>""", unsafe_allow_html=True)
 with col_t:
-    st.markdown("""<div class="metodo-card" style="border-top-color: #FFCC00;"><h4>🎯 Tipo de Muestreo</h4><p><b>Aleatorio Simple (M.A.S.)</b></p><p>Ejecutado mediante un script de Python para garantizar representatividad estadística.</p></div>""", unsafe_allow_html=True)
+    st.markdown("""<div class="metodo-card" style="border-top-color: #FFCC00;"><h4>🎯 Tipo de Muestreo</h4><p><b>Aleatorio Simple (M.A.S.)</b></p><p> Se implementó un script de Python que seleccionó 2.000 registros únicos filtrándolos por su identificador único de anuncio para garantizar la representatividad estadística del subconjunto analizado con respecto a la población original. </p></div>""", unsafe_allow_html=True)
 
 # --- 8. VARIABLES Y ECUACIÓN DEL MODELO ESTIMADO ---
 st.markdown("<h3 class='section-title'>3. Definición del Modelo Estadístico</h3>", unsafe_allow_html=True)
@@ -100,8 +100,8 @@ col_var, col_eq = st.columns([1, 1.2])
 
 with col_var:
     st.write("**Variables del Estudio:**")
-    st.latex(r"x: \text{ Gasto máximo estimado (Variable Independiente)}")
-    st.latex(r"\hat{y}: \text{ Impresiones máximas estimadas (Variable Dependiente)}")
+    st.latex(r"x: \text{ Gasto máximo en dólares $ (Variable Independiente)}")
+    st.latex(r"\hat{y}: \text{ Impresiones máximas (Variable Dependiente)}")
 
 with col_eq:
     st.write("**Ecuación del Modelo de Regresión Lineal Estimado:**")
