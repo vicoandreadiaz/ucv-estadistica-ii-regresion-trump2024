@@ -89,13 +89,13 @@ col_int1, col_int2 = st.columns(2)
 with col_int1:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
     st.markdown("#### Intervalo de confianza para $\mu_{y|x}$")
-    st.latex(r"157.303.741,0 \le \mu_{y|x} \le 163.085.521,6")
+    st.latex(r"[104.986,11628 \le \mu_{y|x} \le 110.088,95151]")
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col_int2:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
     st.markdown("#### Intervalo de confianza para $Y_a$")
-    st.latex(r"73.909.199,11 \le Y_a \le 246.480.063,5")
+    st.latex(r"[13.343,53589\le \mu_{y|x} \le 201.731,53190]")
     st.markdown('</div>', unsafe_allow_html=True)
 
 # =====================================================================
