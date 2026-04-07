@@ -14,7 +14,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("<h1 style='text-align: center; color: #003366;'>📈 Análisis de Regresión Lineal Bivariante - SPSS</h1>", unsafe_allow_html=True)
-st.write("A continuación se presentan los resultados inferenciales extraídos de IBM SPSS, estructurados para validar paso a paso la relación entre el gasto y el alcance publicitario.")
+st.write("A continuación se presentan los resultados inferenciales extraídos de IBM SPSS, estructurados para validar paso a paso la relación entre el gasto máximo y las impresiones máximas de la campaña de Donald J. Trump (2024).")
 
 # =====================================================================
 # SECCIÓN 1: CORRELACIÓN (NUEVA SECCIÓN)
@@ -30,8 +30,8 @@ with col_corr1:
 with col_corr2:
     st.markdown("#### Coeficiente de Pearson ($r$)")
     st.latex(r"r = 0,903 \quad (p < 0,001)")
-    st.success("Existe una **correlación lineal positiva muy fuerte** entre el Gasto Estimado y las Impresiones.")
-    st.write("Este resultado inicial justifica la pertinencia de avanzar hacia un modelo de regresión, confirmando que a mayor inversión, el alcance tiende a crecer de forma estadísticamente consistente.")
+    st.success("las variables presentan una correlación lineal muy alta, en otras palabras, mientras aumenta el gasto máximo que presente una campaña publicitaria, aumentará de manera notoria las impresiones de la misma campaña.")
+    st.write("Este resultado inicial justifica la pertinencia de avanzar hacia un modelo de regresión, confirmando que a mayor inversión, las impresiones tienden a crecer de manera notoria.")
 
 # =====================================================================
 # SECCIÓN 2: ESTIMACIÓN Y SIGNIFICANCIA
@@ -42,13 +42,13 @@ col_res, col_ano = st.columns(2)
 with col_res:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
     st.image("data/assets/spss_resumen.png", caption="Output: Resumen del Modelo", use_container_width=True)
-    st.markdown("""<p class="canavos-note">El R² (0,843) indica que el modelo explica el 84,3% de la variabilidad, pero no certifica la validez estructural de la linealidad (Canavos).</p>""", unsafe_allow_html=True)
+    st.markdown("""<p class="canavos-note">El R² (0,843) indica que 84,3% la variabilidad del número de impresiones de una campaña publicitaria es explicada por los gastos de dicha campaña. Solo el 15,7% de la variabilidad del número máximo de impresiones se debe a otros factores no incluidos en el modelo, pero no certifica con certeza que sea el modelo que mejor se ajuste a los datos.</p>""", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col_ano:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
     st.image("data/assets/spss_anova.png", caption="Output: Tabla ANOVA", use_container_width=True)
-    st.info("La prueba F arroja un nivel de significancia menor a 0,05, por lo que se rechaza la hipótesis nula: **el modelo tiene capacidad predictiva válida**.")
+    st.info("La prueba F arroja un nivel de significancia menor a 0,05, por lo que se rechaza la hipótesis nula: el modelo de regresión lineal propuesto es estadísticamente significativo, es decir, podemos afirmar que la variable  “Gastos máximos” es un predictor lineal significativo de la variable “Impresiones máximas” con un nivel de significación de 0,05.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 # =====================================================================
@@ -79,9 +79,27 @@ with col_graf2:
     # Aquí se carga la imagen que me pasaste
     st.image("data/assets/spss_grafico_recta.png", caption="Curva de Ajuste Lineal (Gasto vs. Impresiones)", use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
+# =====================================================================
+# SECCIÓN 4: ESTIMACIÓN POR INTERVALO
+# =====================================================================
+st.markdown("<h3 class='section-title'>4. Estimación por intervalo para la recta $\mu_{y|x}$ y para $Y_a$</h3>", unsafe_allow_html=True)
+
+col_int1, col_int2 = st.columns(2)
+
+with col_int1:
+    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
+    st.markdown("#### Intervalo de confianza para $\mu_{y|x}$")
+    st.latex(r"157.303.741,0 \le \mu_{y|x} \le 163.085.521,6")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+with col_int2:
+    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
+    st.markdown("#### Intervalo de confianza para $Y_a$")
+    st.latex(r"73.909.199,11 \le Y_a \le 246.480.063,5")
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # =====================================================================
-# SECCIÓN 4: SIMULADOR
+# SECCIÓN 5: SIMULADOR
 # =====================================================================
 st.markdown("<h3 class='section-title'>4. Simulador de Inversión / Retorno</h3>", unsafe_allow_html=True)
 st.write("Pon a prueba el modelo calculando escenarios teóricos:")
@@ -97,7 +115,7 @@ with c_input:
         st.success(f"Inversión requerida ($x$): **${(val_y - 2367.288) / 26.299:,.2f} USD**")
 
 # =====================================================================
-# SECCIÓN 5: VERIFICACIÓN DE SUPUESTOS
+# SECCIÓN 6: VERIFICACIÓN DE SUPUESTOS
 # =====================================================================
 st.markdown("<h3 class='section-title'>5. Verificación de Supuestos</h3>", unsafe_allow_html=True)
 
@@ -116,6 +134,7 @@ with col_sup2:
 
 st.markdown("""
 <div style="background-color: #fff4f4; padding: 15px; border-radius: 8px; border-left: 5px solid #cc0000; margin-top: 10px;">
-    <strong>Conclusión Final:</strong> Pese a la altísima correlación y al R cuadrado favorable, la falla sistemática en los supuestos del modelo demuestra que la verdadera relación contiene dinámicas no lineales subyacentes o sufre de sesgos por variables omitidas. El MRLS es referencial, pero no estructuralmente idóneo para este ecosistema digital.
+    <strong>Conclusión Final:</strong> El análisis realizado permite determinar que, si bien el Modelo de Regresión Lineal Simple (MRLS) presenta una significancia estadística global y un alto poder explicativo, no es el modelo más idóneo para representar con precisión la complejidad del fenómeno económico de la publicidad política en plataformas digitales.
+Aunque el modelo indica que el 84.3% de la variabilidad en las impresiones es explicada por el gasto y que ambos coeficientes de regresión son significativos, la validación de supuestos reveló fallas críticas. El incumplimiento de los supuestos de linealidad, normalidad y homocedasticidad invalida la fiabilidad de las inferencias estadísticas tradicionales en este contexto.
 </div>
 """, unsafe_allow_html=True)
