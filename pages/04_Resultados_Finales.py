@@ -82,18 +82,18 @@ with col_graf2:
 # =====================================================================
 # SECCIÓN 4: ESTIMACIÓN POR INTERVALO
 # =====================================================================
-st.markdown("<h3 class='section-title'>4. Estimación por intervalo para la recta $\mu_{y|x}$ y para $Y_a$</h3> para un valor de x = 3999", unsafe_allow_html=True)
+st.markdown(r"### 4. Estimación por intervalo para la recta $\mu_{yx}$ y para $Y_a$ para un valor de $x = 3999$")
 col_int1, col_int2 = st.columns(2)
 
 with col_int1:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
-    st.markdown("#### Intervalo de confianza para $\mu_{y|x}$")
+    st.markdown(r"#### Intervalo de confianza para $\mu_{yx}$")
     st.latex(r"104.986,12 \le \mu_{yx} \le 110.088,95")
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col_int2:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
-    st.markdown("#### Intervalo de confianza para $Y_a$")
+    st.markdown(r"#### Intervalo de confianza para $Y_a$")
     st.latex(r"13.343,54 \le Y_a \le 201.731,53")
     st.markdown('</div>', unsafe_allow_html=True)
 
