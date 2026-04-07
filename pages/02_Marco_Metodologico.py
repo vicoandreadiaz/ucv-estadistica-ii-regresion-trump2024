@@ -69,8 +69,8 @@ with col_a:
         <h4>🔬 Tipo y Nivel</h4>
         <ul>
             <li><b>Investigación Documental:</b> Basada en la búsqueda, recuperación y análisis de datos secundarios registrados en la <i>Meta Ads Library</i>.</li>
-            <li><b>Nivel Correlacional:</b> Analiza la relación entre el Gasto Estimado ($X$) y las Impresiones Máximas ($Y$).</li>
-            <li><b>Alcance Explicativo:</b> Orientado a comprender la idoneidad del MRLS para explicar el fenómeno de la visibilidad publicitaria.</li>
+            <li><b>Nivel Correlacional:</b> Analiza la relación entre el Gasto Máximo de los Anuncios de Donald J. Trump en la campaña electoral de 2024 y las Impresiones Máximas alcazadas en la misma en las plataformas de Meta.</li>
+            <li><b>Alcance Explicativo:</b> Orientado a comprender la idoneidad del MRLS para explicar el fenómeno del costo de la visibilidad publicitaria del anunciante Donald J. Trump.</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
