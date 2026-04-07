@@ -151,7 +151,7 @@ st.info("""
 st.markdown("<h3 class='section-title'>4. Objetivos de la Investigación</h3>", unsafe_allow_html=True)
 st.markdown("#### Objetivo General")
 st.write("""
-Determinar si la relación entre el gasto estimado máximo y las impresiones máximas alcanzadas por Trump en la campaña de 2024 puede explicarse a través de un modelo de regresión lineal con la finalidad de comprobar si este modelo es el más idóneo para representar éste fenómeno económico.
+Determinar si la relación entre el gasto máximo y las impresiones máximas alcanzadas por Trump en la campaña de 2024 puede explicarse a través de un modelo de regresión lineal con la finalidad de comprobar si este modelo es el más idóneo para representar éste fenómeno económico.
 """)
 
 st.markdown("#### Objetivos Específicos")
