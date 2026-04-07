@@ -78,7 +78,7 @@ with col_b:
     st.markdown("""
     <div class="metodo-card">
         <h4>📋 Diseño de Investigación</h4>
-        <p>Se suscribe a un diseño <b>No Experimental - Transeccional</b>. El estudio observa las variables en su contexto natural (Campaña Electoral 2024) sin manipulación deliberada de los datos.</p>
+        <p>Se suscribe a un diseño de investigación documental, dado que se basa en la búsqueda, recuperación, análisis e interpretación de datos secundarios obtenidos y registrados por otros investigadores, específicamente el conjunto de datos de las campañas Donald J. Trump extraído de la librería de anuncios de Meta (Meta Ads Library).</p>
     </div>
     """, unsafe_allow_html=True)
 
