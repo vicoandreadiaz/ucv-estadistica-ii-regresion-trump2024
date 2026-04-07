@@ -29,7 +29,7 @@ with col_corr1:
 
 with col_corr2:
     st.markdown("#### Coeficiente de Pearson ($r$)")
-    st.latex(r"r = 0,903 \quad (p < 0,001)")
+    st.latex(r"r = 0,918 \quad (p < 0,001)")
     st.success("las variables presentan una correlación lineal muy alta, en otras palabras, mientras aumenta el gasto máximo que presente una campaña publicitaria, aumentará de manera notoria las impresiones de la misma campaña.")
     st.write("Este resultado inicial justifica la pertinencia de avanzar hacia un modelo de regresión, confirmando que a mayor inversión, las impresiones tienden a crecer de manera notoria.")
 
