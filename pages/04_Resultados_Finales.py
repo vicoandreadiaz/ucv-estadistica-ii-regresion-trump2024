@@ -69,6 +69,17 @@ with col_eq:
     st.markdown(r"- **Constante ($a$):** 2368 impresiones máximas.")
     st.markdown(r"- **Pendiente ($b$):** **+26,3 impresiones** máximas por cada dólar invertido.")
 
+st.write("") # Espaciador
+
+# Parte B: El Gráfico de la recta (¡Tu nueva imagen!)
+st.markdown("#### Representación Gráfica del Modelo")
+col_graf1, col_graf2, col_graf3 = st.columns([1, 2, 1]) # Esto centra la imagen para que se vea elegante
+with col_graf2:
+    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
+    # Aquí se carga la imagen que me pasaste
+    st.image("data/assets/spss_grafico_recta.png", caption="Curva de Ajuste Lineal (Gasto vs. Impresiones)", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
 # =====================================================================
 # SECCIÓN 4: SIMULADOR
 # =====================================================================
