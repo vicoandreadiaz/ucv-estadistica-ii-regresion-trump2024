@@ -100,7 +100,7 @@ col_var, col_eq = st.columns([1, 1.2])
 
 with col_var:
     st.write("**Variables del Estudio:**")
-    st.latex(r"$x$: \text{ Gasto máximo en dólares (Variable Independiente)}")
+    st.latex(r"x: \text{ Gasto máximo en dólares (Variable Independiente)}")
     st.latex(r"\hat{y}: \text{ Impresiones máximas (Variable Dependiente)}")
 
 with col_eq:
