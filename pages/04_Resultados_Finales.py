@@ -42,7 +42,7 @@ col_res, col_ano = st.columns(2)
 with col_res:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
     st.image("data/assets/spss_resumen.png", caption="Output: Resumen del Modelo", use_container_width=True)
-    st.markdown("""<p class="canavos-note">El R² (0,816) indica que el modelo explica el 81,6% de la variabilidad, pero no certifica la validez estructural de la linealidad (Canavos).</p>""", unsafe_allow_html=True)
+    st.markdown("""<p class="canavos-note">El R² (0,843) indica que el modelo explica el 84,3% de la variabilidad, pero no certifica la validez estructural de la linealidad (Canavos).</p>""", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col_ano:
@@ -66,7 +66,7 @@ with col_eq:
     st.markdown("#### Ecuación Resultante")
     st.latex(r"\hat{y} = 2368,407 + 26,299x")
     st.write("**Lectura de parámetros:**")
-    st.markdown(r"- **Constante ($a$):** 2.367 impresiones máximas.")
+    st.markdown(r"- **Constante ($a$):** 2368 impresiones máximas.")
     st.markdown(r"- **Pendiente ($b$):** **+26,3 impresiones** máximas por cada dólar invertido.")
 
 # =====================================================================
@@ -105,6 +105,6 @@ with col_sup2:
 
 st.markdown("""
 <div style="background-color: #fff4f4; padding: 15px; border-radius: 8px; border-left: 5px solid #cc0000; margin-top: 10px;">
-    <strong>Conclusión Final:</strong> Pese a la altísima correlación y al $R^2$ favorable, la falla sistemática en los supuestos de Gauss-Markov demuestra que la verdadera relación contiene dinámicas no lineales subyacentes o sufre de sesgos por variables omitidas. El MRLS es referencial, pero no estructuralmente idóneo para este ecosistema digital.
+    <strong>Conclusión Final:</strong> Pese a la altísima correlación y al R cuadrado favorable, la falla sistemática en los supuestos del modelo demuestra que la verdadera relación contiene dinámicas no lineales subyacentes o sufre de sesgos por variables omitidas. El MRLS es referencial, pero no estructuralmente idóneo para este ecosistema digital.
 </div>
 """, unsafe_allow_html=True)
