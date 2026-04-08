@@ -17,44 +17,9 @@ st.markdown("<h1 style='text-align: center; color: #003366;'>📈 Análisis de R
 st.write("A continuación se presentan los resultados inferenciales extraídos de IBM SPSS, estructurados para validar paso a paso la relación entre el gasto máximo y las impresiones máximas de la campaña de Donald J. Trump (2024).")
 
 # =====================================================================
-# SECCIÓN 1: CORRELACIÓN (NUEVA SECCIÓN)
+# SECCIÓN 1: ECUACIÓN DEL MODELO
 # =====================================================================
-st.markdown("<h3 class='section-title'>1. Análisis de Correlación Bivariada</h3>", unsafe_allow_html=True)
-col_corr1, col_corr2 = st.columns([1.5, 1])
-
-with col_corr1:
-    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
-    st.image("data/assets/spss_correlacion.png", caption="Output: Matriz de Correlación de Pearson", use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-with col_corr2:
-    st.markdown("#### Coeficiente de Pearson ($r$)")
-    st.latex(r"r = 0,918 \quad (p < 0,001)")
-    st.success("las variables presentan una correlación lineal muy alta, en otras palabras, mientras aumenta el gasto máximo que presente una campaña publicitaria, aumentará de manera notoria las impresiones de la misma campaña.")
-    st.write("Este resultado inicial justifica la pertinencia de avanzar hacia un modelo de regresión, confirmando que a mayor inversión, las impresiones tienden a crecer de manera notoria.")
-
-# =====================================================================
-# SECCIÓN 2: ESTIMACIÓN Y SIGNIFICANCIA
-# =====================================================================
-st.markdown("<h3 class='section-title'>2. Significancia Global y Bondad de Ajuste</h3>", unsafe_allow_html=True)
-
-col_res, col_ano = st.columns(2)
-with col_res:
-    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
-    st.image("data/assets/spss_resumen.png", caption="Output: Resumen del Modelo", use_container_width=True)
-    st.markdown("""<p class="canavos-note">El R² (0,843) indica que 84,3% la variabilidad del número de impresiones de una campaña publicitaria es explicada por los gastos de dicha campaña. Solo el 15,7% de la variabilidad del número máximo de impresiones se debe a otros factores no incluidos en el modelo, pero no certifica con certeza que sea el modelo que mejor se ajuste a los datos.</p>""", unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-with col_ano:
-    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
-    st.image("data/assets/spss_anova.png", caption="Output: Tabla ANOVA", use_container_width=True)
-    st.info("La prueba F arroja un nivel de significancia menor a 0,05, por lo que se rechaza la hipótesis nula: el modelo de regresión lineal propuesto es estadísticamente significativo, es decir, podemos afirmar que la variable  “Gastos máximos” es un predictor lineal significativo de la variable “Impresiones máximas” con un nivel de significación de 0,05.")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# =====================================================================
-# SECCIÓN 3: ECUACIÓN DEL MODELO
-# =====================================================================
-st.markdown("<h3 class='section-title'>3. Coeficientes y Recta Estimada</h3>", unsafe_allow_html=True)
+st.markdown("<h3 class='section-title'>1. Coeficientes y Recta Estimada</h3>", unsafe_allow_html=True)
 
 col_coef, col_eq = st.columns([1.5, 1])
 with col_coef:
@@ -71,7 +36,7 @@ with col_eq:
 
 st.write("") # Espaciador
 
-# Parte B: El Gráfico de la recta (¡Tu nueva imagen!)
+# Parte B: El Gráfico de la recta 
 st.markdown("#### Representación Gráfica del Modelo")
 col_graf1, col_graf2, col_graf3 = st.columns([1, 2, 1]) # Esto centra la imagen para que se vea elegante
 with col_graf2:
@@ -79,6 +44,41 @@ with col_graf2:
     # Aquí se carga la imagen que me pasaste
     st.image("data/assets/spss_grafico_recta.png", caption="Curva de Ajuste Lineal (Gasto vs. Impresiones)", use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
+# =====================================================================
+# SECCIÓN 2: ESTIMACIÓN Y SIGNIFICANCIA
+# =====================================================================
+st.markdown("<h3 class='section-title'>2. Significancia Global y Bondad de Ajuste</h3>", unsafe_allow_html=True)
+
+col_res, col_anova = st.columns(2)
+with col_res:
+    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
+    st.image("data/assets/spss_resumen.png", caption="Output: Resumen del Modelo", use_container_width=True)
+    st.markdown("""<p class="canavos-note">El r² (0,843) indica que 84,3% la variabilidad del número de impresiones de una campaña publicitaria es explicada por los gastos de dicha campaña. Solo el 15,7% de la variabilidad del número máximo de impresiones se debe a otros factores no incluidos en el modelo, pero no certifica con certeza que sea el modelo que mejor se ajuste a los datos.</p>""", unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+with col_anova:
+    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
+    st.image("data/assets/spss_anova.png", caption="Output: Tabla ANOVA", use_container_width=True)
+    st.info("La tabla ANOVA arroja un nivel de significancia menor a 0,05, por lo que se rechaza la hipótesis nula: el modelo de regresión lineal propuesto es estadísticamente significativo, es decir, podemos afirmar que la variable  “Gastos máximos” es un predictor lineal significativo de la variable “Impresiones máximas” con un nivel de significación de 0,05.")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# =====================================================================
+# SECCIÓN 3: CORRELACIÓN BIVARIADA
+# =====================================================================
+st.markdown("<h3 class='section-title'>3. Análisis de Correlación Bivariada</h3>", unsafe_allow_html=True)
+col_corr1, col_corr2 = st.columns([1.5, 1])
+
+with col_corr1:
+    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
+    st.image("data/assets/spss_correlacion.png", caption="Output: Matriz de Correlación de Pearson", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+with col_corr2:
+    st.markdown("#### Coeficiente de Pearson ($r$)")
+    st.latex(r"r = 0,918 \quad (p < 0,001)")
+    st.success("las variables presentan una correlación lineal muy alta, en otras palabras, mientras aumenta el gasto máximo que presente una campaña publicitaria, aumentará de manera notoria las impresiones de la misma campaña.")
+    st.write("Este resultado inicial  justifica la pertinencia de avanzar hacia un modelo de regresión, confirmando que a mayor inversión, las impresiones tienden a crecer de manera notoria.")
+
 # =====================================================================
 # SECCIÓN 4: ESTIMACIÓN POR INTERVALO
 # =====================================================================
@@ -97,6 +97,16 @@ with col_int2:
     st.latex(r"13.343,54 \le Y_a \le 201.731,53")
     st.markdown('</div>', unsafe_allow_html=True)
 
+### Graficos con bandas de confianza
+col_band1, col_band2 = st.columns(2)
+with col_band1:
+    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
+    st.image("data/assets/spss_bandas_confianza_media.png", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+with col_band2:
+    st.markdown('<div class="spss-box">', unsafe_allow_html=True)
+    st.image("data/assets/spss_bandas_confianza_individuos.png", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 # =====================================================================
 # SECCIÓN 5: SIMULADOR
 # =====================================================================
@@ -121,13 +131,13 @@ st.markdown("<h3 class='section-title'>5. Verificación de Supuestos</h3>", unsa
 col_sup1, col_sup2 = st.columns(2)
 with col_sup1:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
-    st.image("data/assets/spss_normalidad.png", caption="Normalidad de Residuos", use_container_width=True)
+    st.image("data/assets/spss_histograma.png", caption="Normalidad de Residuos", use_container_width=True)
     st.error("❌ **Normalidad:** Desviación en las colas. Riesgo en la estimación de intervalos.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col_sup2:
     st.markdown('<div class="spss-box">', unsafe_allow_html=True)
-    st.image("data/assets/spss_homocedasticidad.png", caption="Dispersión (Homocedasticidad)", use_container_width=True)
+    st.image("data/assets/spss_normalidad.png", caption="Dispersión (Homocedasticidad)", use_container_width=True)
     st.error("❌ **Homocedasticidad:** Varianza no constante (efecto embudo).")
     st.markdown('</div>', unsafe_allow_html=True)
 
