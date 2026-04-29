@@ -1,4 +1,5 @@
 import streamlit as st
+import plotly.graph_objects as go
 
 # --- 1. CONFIGURACIÓN ---
 st.set_page_config(page_title="Resultados Finales - Trump 2024", page_icon="📈", layout="wide")
@@ -101,18 +102,97 @@ with col_int2:
 # SECCIÓN 5: SIMULADOR
 # =====================================================================
 st.markdown("<h3 class='section-title'>4. Simulador de Inversión / Retorno</h3>", unsafe_allow_html=True)
-st.write("Pon a prueba el modelo calculando escenarios teóricos:")
+st.write("Pon a prueba el modelo calculando escenarios teóricos y visualiza en tiempo el punto exacto sobre la recta de regresión:")
+# Parámetros del modelo
+a = 2368.407
+b = 26.299
 
-c_input, c_res = st.columns(2)
+# Dividimos la pantalla: Izquierda (Inputs y CPM) y Derecha (Gráfico)
+c_input, c_graph = st.columns([1, 1.5]) 
+
 with c_input:
-    mode = st.radio("Dirección del cálculo:", ["Proyectar Impresiones (dado el Gasto)", "Estimar Presupuesto (dado el Objetivo)"], horizontal=True)
+    mode = st.radio("Dirección del cálculo:", ["Proyectar Impresiones (dado el Gasto)", "Estimar Presupuesto (dado el Objetivo)"], horizontal=False)
+    
+    # Variables temporales para graficar
+    current_x = 0.0
+    current_y = a
+
     if mode == "Proyectar Impresiones (dado el Gasto)":
         val_x = st.number_input("Inversión en campaña (USD):", min_value=0.0, value=5000.0, step=100.0)
-        st.success(f"Visibilidad estimada ($\hat{{y}}$): **{2367.288 + (26.299 * val_x):,.0f} impresiones**")
+        res_y = a + (b * val_x)
+        current_x = val_x
+        current_y = res_y
+        st.success(f"Visibilidad estimada ($\hat{{y}}$): **{res_y:,.0f} impresiones**")
+        
     else:
         val_y = st.number_input("Objetivo de Impresiones:", min_value=0.0, value=100000.0, step=1000.0)
-        st.success(f"Inversión requerida ($x$): **${(val_y - 2367.288) / 26.299:,.2f} USD**")
+        
+        if val_y < a:
+            st.error("⚠️ **Resultado Inviable:** Inversión requerida negativa.")
+            st.markdown(f"""
+            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 8px; border-left: 5px solid #ffcc00; font-size: 0.85rem;">
+                <b>Explicación:</b> Matemáticamente $x = (y - a) / b$. Ingresar un objetivo menor a la constante base ($a = 2367$) da un gasto negativo. Como no existe inversión publicitaria negativa ($x \ge 0$), el dominio válido inicia en 2.367 impresiones.
+            </div>
+            """, unsafe_allow_html=True)
+            current_x = 0.0
+            current_y = a
+        else:
+            res_x = (val_y - a) / b
+            current_x = res_x
+            current_y = val_y
+            st.success(f"Inversión requerida ($x$): **${res_x:,.2f} USD**")
 
+    # Mover la tarjeta de CPM debajo de los inputs para ahorrar espacio
+    st.write("")
+    st.markdown("""
+    <div style="background-color: #f0f7ff; padding: 15px; border-radius: 10px; border: 2px solid #003366;">
+        <h4 style="color: #003366; margin-top: 0;">💡 Costo Oculto (CPM)</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 5px;">Costo por cada 1.000 impresiones adicionales:</p>
+        <h3 style="margin: 0; color: #28a745;">$38,02 USD</h3>
+        <p style="font-size: 0.8rem; color: #555; margin-top: 5px;">(Ingeniería inversa: 1000 / 26,299)</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with c_graph:
+    # 1. Definimos los límites de la línea para que siempre cubra el punto que buscamos
+    max_x_plot = max(current_x * 1.5, 10000) 
+    x_line = [0, max_x_plot]
+    y_line = [a, a + (b * max_x_plot)]
+
+    fig = go.Figure()
+
+    # 2. Trazamos la Recta de Regresión del MRLS
+    fig.add_trace(go.Scatter(
+        x=x_line, y=y_line,
+        mode='lines',
+        name='Recta de Regresión',
+        line=dict(color='#003366', width=3),
+        hovertemplate='Gasto: $%{x:,.2f}<br>Impresiones: %{y:,.0f}<extra></extra>'
+    ))
+
+    # 3. Ubicamos el "Punto" interactivo de la simulación
+    fig.add_trace(go.Scatter(
+        x=[current_x], y=[current_y],
+        mode='markers+text',
+        name='Tu Escenario',
+        marker=dict(color='#FFCC00', size=14, line=dict(color='black', width=2)),
+        text=[f"🎯 ${current_x:,.0f} USD ➔ {current_y:,.0f} Imp."],
+        textposition="top left",
+        hovertemplate='<b>Tu Simulación</b><br>Gasto: $%{x:,.2f}<br>Impresiones: %{y:,.0f}<extra></extra>'
+    ))
+
+    # 4. Formateamos el Gráfico (Ejes interactivos)
+    fig.update_layout(
+        title="Proyección Interactiva del Modelo",
+        xaxis_title="Eje X: Gasto en Campaña (USD)",
+        yaxis_title="Eje Y: Impresiones Máximas Generadas",
+        template="plotly_white",
+        legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
+        margin=dict(l=0, r=0, t=40, b=0),
+        hovermode="x unified"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 # =====================================================================
 # SECCIÓN 6: VERIFICACIÓN DE SUPUESTOS
 # =====================================================================
