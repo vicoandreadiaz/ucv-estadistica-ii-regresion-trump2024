@@ -139,13 +139,11 @@ with c_input:
         
         if val_y < a:
             st.error("⚠️ **Resultado Inviable:** Inversión requerida negativa.")
-            st.markdown(f"""
-            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 8px; border-left: 5px solid #ffcc00; font-size: 0.85rem;">
-                <b>Explicación:</b> Matemáticamente $x = (y - a) / b$. Ingresar un objetivo menor a la constante base ($a = 2367$) da un gasto negativo. Como no existe inversión publicitaria negativa ($x \ge 0$), el dominio válido inicia en 2.367 impresiones.
-            </div>
-            """, unsafe_allow_html=True)
+            # Cambiamos el HTML por un st.warning nativo que SÍ lee matemáticas
+            st.warning(r"**Explicación Analítica:** Matemáticamente $x = \frac{y - a}{b}$. Ingresar un objetivo menor a la constante base ($a = 2368.407$) da un gasto negativo. Como no existe inversión publicitaria negativa ($x \ge 0$), el dominio válido inicia en 2.367 impresiones.", icon="💡")
             current_x = 0.0
             current_y = a
+
         else:
             res_x = (val_y - a) / b
             current_x = res_x
