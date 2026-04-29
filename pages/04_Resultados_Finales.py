@@ -150,17 +150,6 @@ with c_input:
             current_y = val_y
             st.success(f"Inversión requerida ($x$): **${res_x:,.2f} USD**")
 
-    # Mover la tarjeta de CPM debajo de los inputs para ahorrar espacio
-    st.write("")
-    st.markdown("""
-    <div style="background-color: #f0f7ff; padding: 15px; border-radius: 10px; border: 2px solid #003366;">
-        <h4 style="color: #003366; margin-top: 0;">💡 Costo Oculto (CPM)</h4>
-        <p style="font-size: 0.9rem; margin-bottom: 5px;">Costo por cada 1.000 impresiones adicionales:</p>
-        <h3 style="margin: 0; color: #28a745;">$38,02 USD</h3>
-        <p style="font-size: 0.8rem; color: #555; margin-top: 5px;">(Ingeniería inversa: 1000 / 26,299)</p>
-    </div>
-    """, unsafe_allow_html=True)
-
 with c_graph:
     # 1. Definimos los límites de la línea para que siempre cubra el punto que buscamos
     max_x_plot = max(current_x * 1.5, 10000) 
