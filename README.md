@@ -22,10 +22,10 @@ El despliegue interactivo de los resultados, los estadísticos y el simulador de
 ## 📝 Resumen de la Investigación
 El presente repositorio aloja el código fuente y el entorno de presentación interactiva correspondiente al trabajo final de investigación. El estudio tiene como propósito central analizar el ajuste y la idoneidad del Modelo de Regresión Lineal Simple (MRLS) como herramienta predictiva para estimar el costo de la visibilidad publicitaria en el ecosistema digital.
 
-A través de un diseño metodológico estructurado y el procesamiento de una muestra extraída de la *Meta Ads Library*, se evaluó la relación bivariante entre el gasto publicitario estimado (Variable Independiente) y las impresiones máximas generadas (Variable Dependiente) por la campaña presidencial de Donald J. Trump en 2024.
+A través de un diseño metodológico estructurado y el procesamiento de una muestra extraída de la *Meta Ads Library*, se evaluó la relación funcional bivariante entre el gasto publicitario estimado (Variable Independiente) y las impresiones máximas generadas (Variable Dependiente) por la campaña presidencial de Donald J. Trump en 2024.
 
 ## 📊 Hallazgos y Conclusiones Principales
-Con base en el desarrollo empírico y la evaluación de los supuestos de Gauss-Markov, la investigación concluye lo siguiente:
+Con base en el desarrollo empírico y la evaluación de los supuestos, la investigación concluye lo siguiente:
 
 1. **Aproximación de Tendencia:** El MRLS funciona como una aproximación inicial útil para identificar una tendencia general, logrando explicar una alta proporción de la variabilidad de las impresiones a través del Coeficiente de Determinación ($R^2$).
 2. **Incumplimiento de Supuestos:** Las variables en estudio confirman que el gasto y las impresiones en publicidad política digital no siguen una distribución normal y presentan problemas de heterocedasticidad. Están influenciadas por factores externos (como segmentación geográfica, demográfica y el sistema de subastas del algoritmo) que el modelo bivariante actual deja fuera.
